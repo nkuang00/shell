@@ -37,7 +37,7 @@ int readcmdline()
 Returns:\
 &emsp; ```0``` if exit is called; ```1``` otherwise
 
-Reads in up to 99 bytes from the command line
+Reads in up to 99 bytes from the command line\
 Calls ```parse_cmds```
 
 ```
