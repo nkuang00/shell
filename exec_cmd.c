@@ -1,12 +1,19 @@
 #include "exec_cmd.h"
 
+// int run_cmd(char ** args)
+// Inputs:
+//   char ** args
+// Returns:
+//   0 if cmd is exit, 1 otherwise
+//
+// If the cmd is exit, 0 is returned
+// If the cmd is cd, chdir(args[1]) is called and 1 is returned
+// Otherwise, run_forkcmd(args) is called and 1 is returned
 int run_cmd(char ** args){
-  //if exit (breaks out of while loop in main)
   if(strcmp(args[0], "exit") == 0){
     return 0;
   }
 
-  //if cd
   if (strcmp(args[0], "cd") == 0){
     chdir(args[1]);
   }
@@ -17,6 +24,15 @@ int run_cmd(char ** args){
   return 1;
 }
 
+// int run_redir(char ** args_run, char ** args_in, char ** args_out)
+// Inputs:
+//   char ** args_run
+//   char ** args_in
+//   char ** args_out
+// Returns:
+//   1
+//
+// Reads args_in[0] as input, runs runs_forkcmd(args_run), and writes output to args_out[0]
 int run_redir(char ** args_run, char ** args_in, char ** args_out){
   int in, out, stdin_temp, stdout_temp;
   in = open(args_in[0], O_RDONLY);
@@ -36,6 +52,14 @@ int run_redir(char ** args_run, char ** args_in, char ** args_out){
   return 1;
 }
 
+// int run_redirout(char ** args_in, char ** args_out)
+// Inputs:
+//   char ** args_in
+//   char ** args_out
+// Returns:
+//   1
+//
+// Runs runs_forkcmd(args_in) and writes output to args_out[0]
 int run_redirout(char ** args_in, char ** args_out){
   int out;
   out = open(args_out[0], O_WRONLY | O_CREAT, 0644);
@@ -48,6 +72,14 @@ int run_redirout(char ** args_in, char ** args_out){
   return 1;
 }
 
+// int run_redirin(char ** args_in, char ** args_out)
+// Inputs:
+//   char ** args_in
+//   char ** args_out
+// Returns:
+//   1
+//
+// Reads args_in[0] as input and runs runs_forkcmd(args_out)
 int run_redirin(char ** args_in, char ** args_out){
   int in;
   in = open(args_in[0], O_RDONLY);
@@ -60,6 +92,14 @@ int run_redirin(char ** args_in, char ** args_out){
   return 1;
 }
 
+// int run_pipe(char * str_rd, char * str_wr)
+// Inputs:
+//   char * str_rd
+//   char * str_wr
+// Returns:
+//   1
+//
+// Uses output from str_rd as input for str_wr
 int run_pipe(char * str_rd, char * str_wr){
   FILE * fp_r;
   FILE * fp_w;
@@ -74,6 +114,11 @@ int run_pipe(char * str_rd, char * str_wr){
   return 1;
 }
 
+// void run_forkcmd(char ** args)
+// Inputs:
+//   char ** args
+//
+// Forks and executes cmd
 void run_forkcmd(char ** args){
   int f = fork();
   int status;
