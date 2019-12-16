@@ -10,7 +10,7 @@ int readcmdline(){
   //reads in line of cmd
   printf("$ ");
   fflush(stdout);
-  char cmd_line[100];
+  char cmd_line[101];
   fgets(cmd_line, 100, stdin);
   cmd_line[strlen(cmd_line) - 1] = 0;
   return parse_cmds(cmd_line);
@@ -95,17 +95,11 @@ int parse_redirin(char * line){
 
 int parse_pipe(char * line){
   char * str_rd, * str_wr;
-  char ** arr_wr;
   int ret;
   str_rd = line;
   str_wr = strchr(line, '|') + 2;
   *(str_wr - 3) = 0;
-  arr_wr = parse_args2(str_wr);
-  ret = run_pipe(str_rd, str_wr, arr_wr);
-  free_tokens(arr_wr);
-  arr_wr = NULL;
-  str_rd = NULL;
-  str_wr = NULL;
+  ret = run_pipe(str_rd, str_wr);
   return ret;
 }
 

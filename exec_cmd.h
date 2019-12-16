@@ -12,4 +12,4 @@ void run_forkcmd(char ** args);
 int run_redir(char ** args_run, char ** args_in, char ** args_out);
 int run_redirin(char ** args_in, char ** args_out);
 int run_redirout(char ** args_in, char ** args_out);
-int run_pipe(char * str_rd, char * str_wr, char ** arr_wr);
+int run_pipe(char * str_rd, char * str_wr);

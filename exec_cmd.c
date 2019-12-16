@@ -60,7 +60,7 @@ int run_redirin(char ** args_in, char ** args_out){
   return 1;
 }
 
-int run_pipe(char * str_rd, char * str_wr, char ** arr_wr){
+int run_pipe(char * str_rd, char * str_wr){
   FILE * fp_r;
   FILE * fp_w;
   fp_r = popen(str_rd, "r");
