@@ -142,8 +142,8 @@ Inputs:\
 Returns:\
 &emsp; ```0``` if cmd is exit, ```1``` otherwise
 
-If the cmd is exit, ```0``` is returned
-If the cmd is cd, ```chdir(args[1])``` is called and ```1``` is returned
+If the cmd is exit, ```0``` is returned\
+If the cmd is cd, ```chdir(args[1])``` is called and ```1``` is returned\
 Otherwise, ```run_forkcmd(args)``` is called and ```1``` is returned
 
 
