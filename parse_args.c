@@ -12,7 +12,9 @@
 // Reads in up to 99 bytes from the command line
 // Calls parse_cmds
 int readcmdline(){
-  printf("$ ");
+  char d[200];
+  getcwd(d, 200);
+  printf("%s$ ", d);
   fflush(stdout);
   char cmd_line[101];
   fgets(cmd_line, 100, stdin);
