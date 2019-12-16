@@ -2,9 +2,9 @@
 by Nancy Kuang
 
 ## Features
-  + Parses multiple commands on one line by ';'\
-  + Forks and executes commands\
-  + Redirects using >, <, and < > (in that order)\
+  + Parses multiple commands on one line by ';'
+  + Forks and executes commands
+  + Redirects using >, <, and < > (in that order)
   + Implements pipes (limited to one pipe per command)
 
 
