@@ -196,6 +196,6 @@ Uses output from ```str_rd``` as input for ```str_wr```
 void run_forkcmd(char ** args)
 ```
 Inputs:\
-&emsp; ```char ** args```\
+&emsp; ```char ** args```
 
 Forks and executes cmd
